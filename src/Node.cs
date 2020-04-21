@@ -3,19 +3,24 @@
 namespace UnionFind {
     public class Node {
         
-        public Node(int val) {
-            Val = val;
+        public Node(int id) {
+            Id = id;
+            Root = id;
+            Weight = 1;
+            IsOpen = false;
         }
 
-        public int Val { get; }
+        public readonly int Id;
+
         public int Weight, Root;
+        public int X;
         public bool IsOpen;
 
         public void Print() {
             if (IsOpen) {
-                Console.Write($"{Val, 4}*");
+                Console.Write($"[*]");
             } else  {
-                Console.Write($"{Val, 5}");
+                Console.Write($"[ ]");
             }
         }
 

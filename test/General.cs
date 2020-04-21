@@ -8,7 +8,8 @@ namespace UnionFind.Test {
         public void ConnectTwoNodes() {
             int N = 3;
             var qu = new QuickUnionUF(N);            
-            qu.MakeUnion(1, 2);
+            qu.Open(1);
+            qu.Open(2);
             Assert.True(qu.AreConnected(1, 2));
             Assert.True(qu.AreConnected(2, 1));
         }
@@ -17,7 +18,8 @@ namespace UnionFind.Test {
         public void CheckIfOpen() {
             int N = 3;
             var qu = new QuickUnionUF(N);            
-            qu.MakeUnion(1, 2);
+            qu.Open(1);
+            qu.Open(2);
             Assert.True(qu.IsOpen(1));
             Assert.True(qu.IsOpen(2));
         }

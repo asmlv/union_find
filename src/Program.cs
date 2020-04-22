@@ -11,12 +11,10 @@ namespace UnionFind {
             var N = int.Parse(args[0]);            
             var results = new List<double>(EXPERIMENT_COUNT);
             for (var i = 0; i < EXPERIMENT_COUNT; i++) { 
-                var qu = new QuickUnionUF(N);
+                var qu = new QuickUnion(N);
                 while (true) {                   
                     qu.OpenRandom();  
-                    if (qu.IsPercolate()) {
-                        qu.PrintField();
-                        qu.PrintPercolatedField();
+                    if (qu.IsPercolate()) {                        
                         results.Add(100 * ((double)qu.OpenNodesCnt / qu.TotalAmount));                        
                         break;                
                     }

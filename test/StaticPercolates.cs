@@ -6,7 +6,7 @@ namespace UnionFind.Test {
     public class StaticPercolates {
         [Fact]
         public void CheckIfPercolates() {
-            var qu = new QuickUnionUF(6);
+            var qu = new QuickUnion(6);
             Assert.False(qu.IsPercolate());
             qu.Open(1);
             Assert.False(qu.IsPercolate());
@@ -36,6 +36,10 @@ namespace UnionFind.Test {
             Assert.False(qu.IsPercolate());
             qu.Open(35);
             Assert.False(qu.IsPercolate());
+            qu.Open(21);
+            Assert.False(qu.IsPercolate());
+            qu.Open(22);
+            Assert.True(qu.IsPercolate());
         }
 
     }

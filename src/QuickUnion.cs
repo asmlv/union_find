@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace UnionFind {
-public class QuickUnionUF {
+
+public class QuickUnion : IQuickUnion {
     
     public static readonly int TOP_ID = -1;
     public static readonly int BOTTOM_ID = -2;
@@ -17,13 +17,12 @@ public class QuickUnionUF {
 
     public int TotalAmount { get; private set;}
 
-    public QuickUnionUF(int N) {  
+    public QuickUnion(int N) {  
         Size = N;
         TotalAmount = N*N;
         m_nodes = new Dictionary<int, Node>(N*N);
         OpenNodesCnt = 0;
         m_nodes[TOP_ID] = new Node(TOP_ID);  
-        m_nodes[TOP_ID].IsFilled = true;
         m_nodes[BOTTOM_ID] = new Node(BOTTOM_ID);
         for (var i = 0; i < N; i++) {
             for (var j = 0; j < N; j++) { 
@@ -66,7 +65,7 @@ public class QuickUnionUF {
         for (var i = 0; i < Size; i++) { 
             for (var j = 0; j < Size; j++) {
                 var id = GetId(i, j);
-                if (IsOpen(id) && m_nodes[id].IsFilled) {
+                if (IsOpen(id) && GetRootId(id) == TOP_ID) {
                     Console.Write("[*]");
                 } else  {
                     Console.Write("[ ]");
@@ -116,7 +115,8 @@ public class QuickUnionUF {
     }
 
     private void MakeUnion(int id1, int id2) {
-        if (id2 >= TotalAmount || id2 < 0) return;
+        if (id2 >= TotalAmount || id2 < 0) throw new ArgumentException("Неверное значение идентификатора ячейки");
+
         var p1RootId = GetRootId(id1);
         var p2RootId = GetRootId(id2);
         if (p1RootId == p2RootId) return;
@@ -141,8 +141,6 @@ public class QuickUnionUF {
     private int GetId(int i, int j) {
         return i * Size + j;
     }
-
     
 }
-
 }

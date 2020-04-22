@@ -7,7 +7,7 @@ namespace UnionFind.Test {
         [Fact]
         public void ConnectTwoNodes() {
             int N = 3;
-            var qu = new QuickUnionUF(N);            
+            var qu = new QuickUnion(N);            
             qu.Open(1);
             qu.Open(2);
             Assert.True(qu.AreConnected(1, 2));
@@ -17,7 +17,7 @@ namespace UnionFind.Test {
         [Fact]
         public void CheckIfOpen() {
             int N = 3;
-            var qu = new QuickUnionUF(N);            
+            var qu = new QuickUnion(N);            
             qu.Open(1);
             qu.Open(2);
             Assert.True(qu.IsOpen(1));
@@ -26,7 +26,7 @@ namespace UnionFind.Test {
 
         [Fact]
         public void CheckParent() {
-            var qu = new QuickUnionUF(5);
+            var qu = new QuickUnion(5);
             qu.Open(20);
             qu.Open(23);
             qu.Open(9);
@@ -41,9 +41,9 @@ namespace UnionFind.Test {
             qu.Open(22);
             qu.Open(12);
             qu.Open(4);
-            Assert.Equal(QuickUnionUF.TOP_ID, qu.GetRootId(4));
-            Assert.Equal(QuickUnionUF.TOP_ID, qu.GetRootId(8));
-            Assert.Equal(QuickUnionUF.TOP_ID, qu.GetRootId(9));
+            Assert.Equal(QuickUnion.TOP_ID, qu.GetRootId(4));
+            Assert.Equal(QuickUnion.TOP_ID, qu.GetRootId(8));
+            Assert.Equal(QuickUnion.TOP_ID, qu.GetRootId(9));
         }
     }
 }

@@ -12,7 +12,7 @@ namespace UnionFind.Test {
             var N = 200;
             var results = new List<double>();
             for (var i = 0; i < 100; i++) { 
-                var qu = new QuickUnionUF(N);
+                var qu = new QuickUnion(N);
                 while (true) {
                     var id = RandomNumberGenerator.GetInt32(0, qu.TotalAmount);
                     qu.Open(id);  

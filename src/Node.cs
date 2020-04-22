@@ -1,19 +1,15 @@
-﻿using System;
-
+﻿
 namespace UnionFind {
     public class Node {
         
-        public Node(int id) {
-            Id = id;
-            Root = id;
+        public Node(int rootId) {
+            Root = rootId;
             Weight = 1;
             IsOpen = false;
-            IsFilled = false;
         }
 
-        public readonly int Id;
         public int Weight, Root;
         public bool IsBoundary;
-        public bool IsOpen, IsFilled;
+        public bool IsOpen;
     }
 }

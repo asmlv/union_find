@@ -8,21 +8,12 @@ namespace UnionFind {
             Root = id;
             Weight = 1;
             IsOpen = false;
+            IsFilled = false;
         }
 
         public readonly int Id;
-
         public int Weight, Root;
-        public int X;
-        public bool IsOpen;
-
-        public void Print() {
-            if (IsOpen) {
-                Console.Write($"[*]");
-            } else  {
-                Console.Write($"[ ]");
-            }
-        }
-
+        public bool IsBoundary;
+        public bool IsOpen, IsFilled;
     }
 }
